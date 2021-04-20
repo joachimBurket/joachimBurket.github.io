@@ -31,3 +31,16 @@
     text-align: center;
   }
 }
+
+.footer__license {
+  a {
+    @include link-colors($text-color, $main-color-1);
+  }
+}
+
+.footer__license {
+  color: $text-color-l;
+  img {
+    height: map-get($base, font-size) * 1.6;
+  }
+}
