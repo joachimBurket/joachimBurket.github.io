@@ -1,10 +1,9 @@
 ---
 title: Scala cheatsheet
-layout: page
+modify_date: 2021-05-02
 ---
 
-# Scala cheatsheet
-
+![Scala-logo](/assets/images/cheatsheets/scala/scala-full-color.svg)
 
 
 ## Principes Functional programming
@@ -29,10 +28,10 @@ Pure functions are RT:
 Examples:
 
 ```scala
-sin(x)							// Referentially Transparent
-length(s) with s a String		// RT
-currentTime()					// NOT RT
-printf()						// NOT RT (car écrit sur console => output)
+sin(x)                    // Referentially Transparent
+length(s) with s a String // RT
+currentTime()             // NOT RT
+printf()                  // NOT RT (car écrit sur console => output)
 ```
 
 
@@ -59,23 +58,21 @@ Call-by-name:
 
 
 
-### Aborder un problème en FP
+### Addressing a problem in FP
 
-Pour implémenter une fonction en FP, plusieurs solutions s'offrent:
+We can often use one of these solutions to address a problem in functional programing: 
 
-* Récursion (ou tailRecursion) + pattern matching
-* Higher Order Functions (HOF)
-* Mix 1 et 2 
-* Compréhensions de séquences
-
-
+1. Recursion (or tailRecursion) + pattern matching
+2. Higher Order Function (HOF)
+3. Mix 1 and 2
+4. Sequence comprehensions
 
 ## Divers
 
 ```scala
 // import library used for @tailrec notation
 import scala.annotation.tailrec
-/// ??? peut être utilisé pour une fct pas encore définie 
+/// ??? can be used for a function not already defined
 def myFnct = ???
 // Checking predicates
 assert(predicate)		// for checking if fct is working correctly
@@ -84,7 +81,6 @@ require(predicate)		// for checking precondition
 sys.error(message: String)
 sys.exit()
 ```
-
 
 
 ## Definitions
@@ -101,9 +97,9 @@ val v = expr		// expr is evaluated only once
 ### Variables
 
 ```scala
-var x = 1		// mutable
-val x = 1		// immutable
-val x:Int = 1	// explicit type
+var x = 1       // mutable
+val x = 1       // immutable
+val x:Int = 1   // explicit type
 ```
 
 
@@ -126,7 +122,7 @@ def sumInts(a: Int, b: Int) : Double =
   if(a > b) 0 else a + sumInts(a + 1, b)
 ```
 
-Stack d'appels:
+Call stack:
 
 ```scala
 sumInts(1, 5)
@@ -142,9 +138,9 @@ sumInts(1, 5)
 
 #### Tail-recursive functions:
 
-Fonctions récursives pas toujours bien car stack d'appelle de plus en plus grande
+Recursive functions can be a problem because the call stack becomes bigger and bigger. 
 
-​	=> Tail recursive functions: résultat intermédiaire calculé et donné en param du prochain appel. 
+​	=> With Tail Recursive functions, an intermediate result is computed and given in param of the next call. This way, the call stack has a fixed size regardless of the number of recusions.
 
 ```scala
 def sumIntsTail(a: Int, b: Int) : Double = {
@@ -156,7 +152,7 @@ def sumIntsTail(a: Int, b: Int) : Double = {
 }
 ```
 
-Stack d'appels:
+Call Stack:
 
 ```scala
 sumIntsTail(1, 5)
@@ -199,10 +195,10 @@ def geneSum(f: Int => Double, a: Int, b: Int) : Double = {...}	// arg1 is a func
 
 #### Partial application of functions
 
-* Permet de redéfinir une fonctions avec moins d'args et des args statiques
+* Allow to redefine a function with less args and static args
   * set some values and reduces the arity of the base function
   * partial application evaluates immediately
-* Avantage: réutiliser des fct déjà écrites et les spécialiser
+* Avantages: Reuse already written functions and specialise them
 
 ```scala
 def adder(x: Int, y: Int) = x + y 
@@ -216,8 +212,7 @@ add2(5)		=> 7
 
 #### Currying :chicken: 
 
-* Convertir une fonction a plusieurs args en une **chaîne de fonctions à 1 seul arg** 
-  * transform an n-ary function into n unary functions (arity = nb of arg of a fct)
+* Transform an n-ary function into a chain of n unary functions (arity = nb of arg of a fct)
 
 ```scala
 // Currying and partial applications example
@@ -226,8 +221,6 @@ addCurry(3)(4)
 val inc = addCurry(1) _
 inc(3)
 ```
-
-
 
 ## Types
 
@@ -251,7 +244,7 @@ inc(3)
 
      ​				      Access 
 
-![scala_types](/assets/img/cheatsheets/scala/scala_types.png)
+<img src="/assets/images/cheatsheets/scala/scala_types.png" alt="Scala types">
 
 ### Genericity 
 
@@ -300,7 +293,7 @@ length[Int](intsList: List[Int])
 
 Precedence of an operator determined by its first characters.
 
-<img src="/assets/img/cheatsheets/scala/precedence_rules.png" style="zoom:30%">
+<img src="/assets/images/cheatsheets/scala/precedence_rules.png" alt="operators precedence" class="image image--xl">
 
 
 
@@ -591,7 +584,7 @@ Most used HOF on lists :
   List(1,2,3).foldRigh(2)((x, y) => x - y)
   ```
 
-  ![foldright-foldleft](/assets/img/cheatsheets/scala/foldright-foldleft.png)
+<img src="/assets/images/cheatsheets/scala/foldright-foldleft.png" alt="foldright-foldleft">
 
 * **flatten**: flatten a `List(List()...)` into a `List()`
 
@@ -735,13 +728,6 @@ f onComplete {
 val result : Int = Await.result(f, 3 seconds) 	// wait for f result or max 3sec
 ```
 
-* Futures compositions: chain futures !
-
-```scala
-TODOO (appendix cours 8)
-```
-
-
 
 ### Actor model 
 
@@ -753,6 +739,4 @@ TODOO (appendix cours 8)
 
 ```scala
 import akka.actor.{Actor, ActorLogging, ActorSystem, Props, actorRef2Scala}
-
 ```
-

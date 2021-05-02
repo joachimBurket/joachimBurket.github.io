@@ -1,59 +1,15 @@
 ---
 title: Rust Cheatsheet
-layout: page
+modify_date: 2021-05-02
 ---
-# Rust language Cheatsheet
 
-
-
-
-
-
-
-
-
-
-
-![Rustacean-orig-noshadow](/assets/img/cheatsheets/rust/Rustacean-orig-noshadow.svg)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-​																																										**Version: 1.0**
-
-------
-
-
-
-[TOC]
-
-
+![Rustacean-logo](/assets/images/cheatsheets/rust/Rustacean-orig-noshadow.svg)
 
 ## Tools 
 
 * **rustup**: command-line tool to manage rust version 
 * **rustc:** Rust compiler. Generates a binary file 
 * **cargo**: Rust build system. Used to manage a project and its dependencies
-
 
 
 ## Create new project using Cargo
@@ -369,7 +325,7 @@ let s2 = s1;	// s1 is invalidated
 
 When doing `let s2 = s1`, the variable `s1` is invalidated: 
 
-<img src="/assets/img/cheatsheets/rust/ownership_move.png" alt="ownership_move" style="zoom:75%;" />
+<img src="/assets/images/cheatsheets/rust/ownership_move.png" alt="ownership_move" style="zoom:75%;" />
 
 
 
@@ -382,7 +338,7 @@ let s1 = String::from("hello");
 let s2 = s1.clone();
 ```
 
-<img src="/assets/img/cheatsheets/rust/ownership_clone.png" alt="ownership_clone" style="zoom:75%;" />
+<img src="/assets/images/cheatsheets/rust/ownership_clone.png" alt="ownership_clone" style="zoom:75%;" />
 
 
 
