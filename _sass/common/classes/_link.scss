@@ -10,3 +10,7 @@
   }
   @include clickable($clr, null, $hover-clr, null, $active-clr, null, $focus-clr, null, $theme, $ignore-path);
 }
+
+a.external::after {
+  content: "↗";
+}
