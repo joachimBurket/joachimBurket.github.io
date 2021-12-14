@@ -43,3 +43,24 @@ In order to do this behaviour from a Linux OS:
     $ sudo rm -rf /media/osmc_boot
     ```
 When this is done, plug in the SSD to the Raspberry Pi (with no other USB connected), put the SD Card on the Raspberry and turn it on. OSMC startup will begin, and will disclaim that the USB disk will be formatted. Wait the 60 seconds, and the filesystem should be installed on the SSD.
+
+After OSMC has been installed and has booted, edit the `/boot/cmdline.txt` so that initramfs knows in which disk the root filesystem is located:
+
+```bash
+# Get the disk UUID
+$ ls -l /dev/disk/by-uuid
+lrwxrwxrwx 1 root root 15 Dec 14 18:31 <uuid1> -> ../../mmcblk0p1
+lrwxrwxrwx 1 root root 10 Dec 14 18:31 <uuid2> -> ../../sda1
+lrwxrwxrwx 1 root root 10 Dec 14 18:31 <uuid3> -> ../../sdb1
+
+# Edit cmdline.txt file
+$ sudo vim /boot/cmdline.txt
+```
+
+`/boot/cmdline.txt` file:
+
+```
+root=UUID=<uuid2> rootfstype=ext4 rootwait quiet osmcdev=rbp4
+```
+
+After that, OSMC can boot even with multiple USB disks connected.
