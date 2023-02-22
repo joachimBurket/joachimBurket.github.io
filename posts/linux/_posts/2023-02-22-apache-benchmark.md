@@ -38,7 +38,7 @@ Here is the usage of `ab`:
 ab [options] [http[s]://]hostname[:port]/path
 ```
 
-The Hostname/IP **must** end with a trailing slash!{:.info}
+The Hostname/IP **must** end with a trailing slash! {:.info}
 
 The most useful options of `ab` are:
 
