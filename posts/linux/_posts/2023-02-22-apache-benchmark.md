@@ -8,7 +8,7 @@ Some details about Apache Benchmark tool.
 <!--more-->
 
 Useful documentation:
-* Man page: [https://httpd.apache.org/docs/2.4/programs/ab.html]([https://linux.die.net/man/8/logrotate](https://httpd.apache.org/docs/2.4/programs/ab.html))
+* Man page: [https://httpd.apache.org/docs/2.4/programs/ab.html](https://httpd.apache.org/docs/2.4/programs/ab.html)
 
 [Apache Benchmark](https://httpd.apache.org/docs/2.4/programs/ab.html) (also named **ab**) is a tool for benchmarking HTTP servers. It is very useful to simulate load on a server and see how it reacts.
 
