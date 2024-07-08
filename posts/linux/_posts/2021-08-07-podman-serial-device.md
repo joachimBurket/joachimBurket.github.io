@@ -3,14 +3,18 @@ title: Access serial device from rootless container
 tags: sysadmin linux containers podman
 ---
 
-Reading and writing a serial device from into a container is possible using [Podman](https://podman.io/) >3.2
+Reading and writing a serial device from within a container is possible using [Podman](https://podman.io/) >3.2
 
 <!--more-->
 
-First, dont' forget to change the SELinux tag on the device (in the host) so that containers can use it:
+On SELinux enabled systems the device (e.g. /dev/ttyUSB0) is most likely not accessible by a rootless podman container. For a container to access the device, change the SELinux tag on the host OS:
 
 ```bash
-$ sudo chcon -t container_file_t /mnt/engineering
+# Check if SELinux is present and enabled
+$ sestatus
+
+# change file security context
+$ sudo chcon -t container_file_t /dev/ttyUSB0
 ```
 
 Then, run the container with the following command:
